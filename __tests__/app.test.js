@@ -3,6 +3,8 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 
+jest.mock('../lib/utils/github');
+
 describe('chromatic-backend routes', () => {
   beforeEach(() => {
     return setup(pool);
@@ -20,14 +22,17 @@ describe('chromatic-backend routes', () => {
     );
   });
 
-  // it('should login and test callback endpoint', async () => {
-  //   const res = await request
-  //     .agent(app)
-  //     .get('/api/v1/github/login/callback?code=42')
-  //     .redirects(1);
+  it('should login and test callback endpoint', async () => {
+    const res = await request
+      .agent(app)
+      .get('/api/v1/github/login/callback?code=42')
+      .redirects(1);
 
-  //   expect(res.body).toEqual([{
-  //     id: '1',
-  //   }])
-  // })
+    expect(res.body).toEqual([{
+      id: '1',
+      email: 'not-real@example.com',
+      username: 'fake_github_user'
+    }]);
+  });
+
 });
