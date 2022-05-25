@@ -35,7 +35,7 @@ describe('chromatic-backend routes', () => {
     }]);
   });
 
-  it.only('logs a user out/deletes the session cookie', async () => {
+  it('logs a user out/deletes the session cookie', async () => {
     const agent = request.agent(app);
     const res = await agent.delete('/api/v1/github');
     const expected = {
@@ -46,6 +46,15 @@ describe('chromatic-backend routes', () => {
     expect(res.body).toEqual(expected);
   });
 
+  it('returns a list of users', async () => {
+    const agent = request.agent(app);
+    const res = await agent.get('/api/v1/github/login/callback?code=42').redirects(1);
 
+    expect(res.body).toEqual([{
+      id: '1',
+      email: 'not-real@example.com',
+      username: 'fake_github_user'
+    }]);
+  });
 
 });
