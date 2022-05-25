@@ -35,4 +35,17 @@ describe('chromatic-backend routes', () => {
     }]);
   });
 
+  it.only('logs a user out/deletes the session cookie', async () => {
+    const agent = request.agent(app);
+    const res = await agent.delete('/api/v1/github');
+    const expected = {
+      message: 'Signed out successfully',
+      success: true
+    };
+
+    expect(res.body).toEqual(expected);
+  });
+
+
+
 });
