@@ -87,9 +87,8 @@ describe('chromatic backend pallets routes', () => {
     const palette = await request(app)
       .post('/api/v1/palettes')
       .send({ name: 'summer', swatchArr: colorObjJson, userId: 1 });
-    const parsedPalette = JSON.parse(palette.text);
     const res = await request(app).get(
-      `/api/v1/palettes/${parsedPalette.userId}`
+      `/api/v1/palettes/user/${palette.body.userId}`
     );
     const expected = [
       {
@@ -99,6 +98,23 @@ describe('chromatic backend pallets routes', () => {
         swatchArr: colorObjJson,
       },
     ];
+    expect(res.body).toEqual(expected);
+  });
+
+  it.only('should get one palette by palette id', async () => {
+    const palette = await request(app)
+      .post('/api/v1/palettes')
+      .send({ name: 'summer', swatchArr: colorObjJson, userId: 1 });
+    console.log('palette id :>> ', palette.body.id);
+
+    const res = await request(app).get(`/api/v1/palettes/${palette.body.id}`);
+
+    const expected = {
+      id: expect.any(String),
+      userId: expect.any(String),
+      name: 'summer',
+      swatchArr: colorObjJson,
+    };
     expect(res.body).toEqual(expected);
   });
 });
