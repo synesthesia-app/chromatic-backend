@@ -83,4 +83,22 @@ describe('chromatic backend pallets routes', () => {
 
     expect(res.body).toEqual(expected);
   });
+  it('should get all palettes by userId', async () => {
+    const palette = await request(app)
+      .post('/api/v1/palettes')
+      .send({ name: 'summer', swatchArr: colorObjJson, userId: 1 });
+    const parsedPalette = JSON.parse(palette.text);
+    const res = await request(app).get(
+      `/api/v1/palettes/${parsedPalette.userId}`
+    );
+    const expected = [
+      {
+        id: expect.any(String),
+        userId: expect.any(String),
+        name: 'summer',
+        swatchArr: colorObjJson,
+      },
+    ];
+    expect(res.body).toEqual(expected);
+  });
 });
