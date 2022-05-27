@@ -36,9 +36,5 @@ VALUES
   ('2nd image', 1),
   ('3rd image', 2);
 
-INSERT INTO
-  palettes (name, swatch_arr, user_id)
-VALUES
-  ('summer', '[{"color":"red"},{"color":"orange"}]', 1);
 
   -- json.stringify each object when inserting and updating, json.parse when reading
