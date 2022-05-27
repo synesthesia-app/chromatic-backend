@@ -26,6 +26,18 @@ describe('image route tests', () => {
     expect(res.body).toEqual(expected);
     });
 
+  it('creates an image name entry', async () => {
+    const expected = { imageName: 'fake', userId: '2' };
+
+    const res = await request(app)
+      .post('/api/v1/images')
+      .send({ imageName: 'fake', userId: '2' });
+    
+    expect(res.body).toEqual(expected);
+
+   
+  })
+
 
 
 
