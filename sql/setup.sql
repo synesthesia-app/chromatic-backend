@@ -26,12 +26,15 @@ CREATE TABLE palettes (
 INSERT INTO
   users (username, email)
 VALUES
-  ('mockUser', 'mock@email.com');
+  ('mockUser', 'mock@email.com'),
+  ('BobBob', 'bob@email.com');
 
 INSERT INTO
   images (image_name, user_id)
 VALUES
-  ('avatar', 1);
+  ('avatar', 1),
+  ('2nd image', 1),
+  ('3rd image', 2);
 
 INSERT INTO
   palettes (name, swatch_arr, user_id)
