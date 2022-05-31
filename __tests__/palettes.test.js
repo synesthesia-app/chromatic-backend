@@ -101,7 +101,7 @@ describe('chromatic backend pallets routes', () => {
     expect(res.body).toEqual(expected);
   });
 
-  it.only('should get one palette by palette id', async () => {
+  it('should get one palette by palette id', async () => {
     const palette = await request(app)
       .post('/api/v1/palettes')
       .send({ name: 'summer', swatchArr: colorObjJson, userId: 1 });
