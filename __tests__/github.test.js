@@ -5,7 +5,7 @@ const app = require('../lib/app');
 
 jest.mock('../lib/utils/github');
 
-describe.skip('chromatic-backend routes', () => {
+describe('chromatic-backend routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
