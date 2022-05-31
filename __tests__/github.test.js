@@ -23,12 +23,12 @@ describe('chromatic-backend routes', () => {
   });
 
   it('should login and test callback endpoint', async () => {
-    const res = await request
+    const req = await request
       .agent(app)
       .get('/api/v1/github/login/callback?code=42')
       .redirects(1);
 
-    expect(res.req.path).toEqual('/main');
+    expect(req.req.path).toEqual('/main');
   });
 
   it('logs a user out/deletes the session cookie', async () => {
