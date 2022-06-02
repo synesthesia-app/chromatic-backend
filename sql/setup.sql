@@ -26,7 +26,7 @@ CREATE TABLE palettes (
 INSERT INTO
   users (username, email)
 VALUES
-  ('mockUser', 'mock@email.com'),
+  ('Guest User', 'guest@email.com'),
   ('BobBob', 'bob@email.com');
 
 INSERT INTO
