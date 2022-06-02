@@ -27,17 +27,21 @@ describe('image route tests', () => {
   });
 
   it('creates an image name entry', async () => {
-    const expected = { imageName: 'fake', userId: '2' };
+    const expected = { imageName: 'fake', publicId: 'hudeownde', userId: '2' };
 
     const res = await request(app)
       .post('/api/v1/images')
-      .send({ imageName: 'fake', userId: '2' });
+      .send({ imageName: 'fake', publicId: 'hudeownde', userId: '2' });
 
     expect(res.body).toEqual(expected);
   });
 
   it('deletes an image by name', async () => {
-    const expected = { imageName: '3rd image', userId: '2' };
+    const expected = {
+      imageName: '3rd image',
+      publicId: 'BDJIEWBDJEVRFV',
+      userId: '2',
+    };
 
     const res = await request(app).delete('/api/v1/images/3rd image');
 

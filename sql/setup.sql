@@ -13,6 +13,7 @@ CREATE TABLE users (
 CREATE TABLE images (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   image_name TEXT NOT NULL,
+  public_id TEXT NOT NULL,
   user_id BIGINT REFERENCES users (id)
 );
 
@@ -30,11 +31,11 @@ VALUES
   ('BobBob', 'bob@email.com');
 
 INSERT INTO
-  images (image_name, user_id)
+  images (image_name, public_id, user_id)
 VALUES
-  ('avatar', 1),
-  ('2nd image', 1),
-  ('3rd image', 2);
+  ('avatar', 'BJIEJDKNE', 1),
+  ('2nd image', 'DBUIEBDJEO', 1),
+  ('3rd image', 'BDJIEWBDJEVRFV', 2);
 
 
   -- json.stringify each object when inserting and updating, json.parse when reading
