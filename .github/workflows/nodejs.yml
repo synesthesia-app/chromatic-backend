@@ -22,4 +22,5 @@ jobs:
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-          REDIRECT_URI: http://localhost:7890/api/v1/github/login/callback
+          REDIRECT_URI: ${{ secrets.REDIRECT_URI }}
+          FRONTEND_URL: ${{ secrets.FRONTEND_URL }}
