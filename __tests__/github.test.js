@@ -44,7 +44,6 @@ describe('chromatic-backend routes', () => {
 
   it('returns a list of users', async () => {
     const agent = request.agent(app);
-    // const res = await agent.get('/api/v1/github/login/callback?code=42').redirects(1);
     const res = await agent.get('/api/v1/github/users');
 
     expect(res.body).toEqual([

@@ -62,6 +62,7 @@ describe('chromatic backend pallets routes', () => {
 
     expect(res.body).toEqual(expected);
   });
+
   it('should update a palette', async () => {
     await request(app)
       .post('/api/v1/palettes')
@@ -83,6 +84,7 @@ describe('chromatic backend pallets routes', () => {
 
     expect(res.body).toEqual(expected);
   });
+
   it('should get all palettes by userId', async () => {
     const palette = await request(app)
       .post('/api/v1/palettes')
@@ -105,7 +107,6 @@ describe('chromatic backend pallets routes', () => {
     const palette = await request(app)
       .post('/api/v1/palettes')
       .send({ name: 'summer', swatchArr: colorObjJson, userId: 1 });
-    console.log('palette id :>> ', palette.body.id);
 
     const res = await request(app).get(`/api/v1/palettes/${palette.body.id}`);
 
