@@ -22,7 +22,7 @@ describe('chromatic-backend routes', () => {
     );
   });
 
-  it.only('should login and test callback endpoint', async () => {
+  it('should login and test callback endpoint', async () => {
     const res = await request
       .agent(app)
       .get('/api/v1/github/login/callback?code=42')
