@@ -17,7 +17,16 @@ describe('image route tests', () => {
     //   { imageName: 'avatar' },
     //   { imageName: '2nd image' }
     // ];
-    const expected = ['avatar', '2nd image'];
+    const expected = [
+      {
+        imageName: 'avatar',
+        publicId: 'BJIEJDKNE',
+      },
+      {
+        imageName: '2nd image',
+        publicId: 'DBUIEBDJEO',
+      },
+    ];
 
     const res = await request(app)
       //get images from user with id 1
