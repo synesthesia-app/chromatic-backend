@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const Image = require('../lib/models/Image');
 
 describe('image route tests', () => {
   beforeEach(() => {
@@ -55,5 +56,23 @@ describe('image route tests', () => {
     const res = await request(app).delete('/api/v1/images/3rd image');
 
     expect(res.body).toEqual(expected);
+  });
+
+  it.only('gets a count of all images', async () => {
+    const agent = request.agent(app);
+    await agent.get('/api/v1/github/login/callback?code=42').redirects(1);
+
+    const allImages = await Image.getAllImages();
+
+    const res = await agent.get('/api/v1/images/count');
+    // const res = await request(app)
+    //   .get('/api/v1/images/count');
+
+    console.log('|res!!', res);
+    
+    expect(res.body).toEqual(allImages);
+    // expect(res.body.length).toEqual(allImages.length);
+    // expect(Number(res.text)).toEqual(allImages.length);
+
   });
 });
