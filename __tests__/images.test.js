@@ -13,10 +13,6 @@ describe('image route tests', () => {
   });
 
   it('get all images associated with user ID', async () => {
-    // const expected = [
-    //   { imageName: 'avatar' },
-    //   { imageName: '2nd image' }
-    // ];
     const expected = [
       {
         imageName: 'avatar',
