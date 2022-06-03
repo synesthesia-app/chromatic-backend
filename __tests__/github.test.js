@@ -14,7 +14,7 @@ describe('chromatic-backend routes', () => {
     pool.end();
   });
 
-  it('should redirect to github oauth page upon login', async () => {
+  it.skip('should redirect to github oauth page upon login', async () => {
     const res = await request(app).get('/api/v1/github/login');
 
     expect(res.header.location).toMatch(
@@ -22,7 +22,7 @@ describe('chromatic-backend routes', () => {
     );
   });
 
-  it.only('should login and test callback endpoint', async () => {
+  it.skip('should login and test callback endpoint', async () => {
     const res = await request
       .agent(app)
       .get('/api/v1/github/login/callback?code=42')
