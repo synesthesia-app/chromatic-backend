@@ -28,6 +28,7 @@ INSERT INTO
   users (username, email)
 VALUES
   ('mockUser', 'mock@email.com'),
+  -- ('armaBurton', 'armanarma@armaburton.com'),
   ('BobBob', 'bob@email.com');
 
 INSERT INTO
